@@ -121,11 +121,17 @@ const controlAddRecipe = async function (newRecipe) {
     setTimeout(function () {
       addRecipeView.toggleWindow();
     }, MODAL_CLOSE_SEC * 1000);
+
+    // Reload page when new recipe is added
+    location.reload();
   } catch (err) {
     console.error(err);
     addRecipeView.renderError(err.message);
+
+    setTimeout(function () {
+      location.reload();
+    }, MODAL_CLOSE_SEC * 1000);
   }
-  location.reload();
 };
 
 const init = function () {
